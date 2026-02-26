@@ -2,7 +2,7 @@ import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-TOKEN = os.environ.get("BOT_TOKEN")
+TOKEN = os.environ.get("BOT_TOKEN")  # El token de tu bot de Telegram
 
 PEDIDOS = {}
 
@@ -15,7 +15,11 @@ AREAS = {
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Hola, soy PEDIXO 🤖. Escribe tus pedidos línea por línea. Para eliminar, escribe 'No necesito <producto>'")
+    await update.message.reply_text(
+        "Hola, soy PEDIXO 🤖.\n"
+        "Escribe tus pedidos línea por línea.\n"
+        "Para eliminar, escribe 'No necesito <producto>'"
+    )
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user.first_name
